@@ -553,8 +553,10 @@ func (m Message) GenRpcSearchReqMessage(buf *bytes.Buffer) {
 
 	m.Name = "Search" + mOrginName + "Req"
 	curFields := []MessageField{
-		{Typ: "int64", Name: "page", tag: 1, Comment: "page"},
-		{Typ: "int64", Name: "limit", tag: 2, Comment: "limit"},
+		{Typ: "int64", Name: "pageIndex", tag: 1, Comment: "页码数"},
+		{Typ: "int64", Name: "pageSize", tag: 2, Comment: "每页大小"},
+		{Typ: "int64", Name: "fuzzy", tag: 3, Comment: "是否模糊查询，1-模糊查询，2精确查询"},
+		{Typ: "string", Name: "orderBy", tag: 4, Comment: "指定的字符排序如 user_id desc,user_name asc"},
 	}
 	var filedTag = len(curFields)
 	for _, field := range m.Fields {
